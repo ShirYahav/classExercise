@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .s1{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+        .s2{
+            width:170px;
+            height: 170px;
+            background-color: pink;
+        }
+        .s3{
+            width: 100px;
+            height: 100px;
+            background-color: salmon;
+        }
+    </style>
+</head>
+<body>
+    <!-- exercise 1 -->
+    <div class="s1">
+        <div class="s2">
+            <div class="s3"></div>
+        </div>
+    </div>
+
+    <!-- exercise 2 -->
+    <input class="ex2" type="text"/>
+   
+    <!-- exercise 3 -->
+    <div class="tag1">hello World</div>
+    <p class="tag2">click me</p>
+    <h1 class="tag3">lalalala</h1>
+
+    <!-- exercise 4 -->
+    <input class="ex4" type="text"/>
+    <div class="notValid"></div>
+
+    <!-- exercise 5 -->
+    <input class="ex5" type="text"/>
+    <div class="divEx"></div>
+    
+
+   <script>
+        //exercise 1
+         const s1 = document.querySelector('.s1')
+         const s3 = document.querySelector('.s3')
+         s3.addEventListener('click', changeColor)
+         function changeColor(){
+             s1.style.backgroundColor = "salmon"
+        }
+
+        //exercise 2
+        const ex2 = document.querySelector('.ex2')
+        ex2.addEventListener('click',numbersOnly)
+        function numbersOnly(){
+            ex2.type = "number"
+        }
+
+        //exercise 3
+        const tag1 = document.querySelector('.tag1')
+        const tag2 = document.querySelector('.tag2')
+        const tag3 = document.querySelector('.tag3')
+        function paint(el){
+            el.style.backgroundColor ="aqua"
+        }
+        tag1.addEventListener('click', function(){paint(tag1)})
+        tag2.addEventListener('click', function(){paint(tag2)})
+        tag3.addEventListener('click', function(){paint(tag3)})
+
+        //exercise 4
+        const ex4 = document.querySelector('.ex4')
+        const notValid = document.querySelector('.notValid')
+        ex4.addEventListener('keypress', lettersNumbers)
+        function lettersNumbers(event){
+            if((event.key === "$") || (event.key === "#") || (event.key === "@") || (event.key === "&" || (event.key === "*") || (event.key === "!") || (event.key === ")")  || (event.key === "("))){
+                event.preventDefault()
+                notValid.innerHTML = "key not valid"
+            }
+        }
+
+        //exercise 5
+        const ex5 = document.querySelector('.ex5')
+        const divEx = document.querySelector('.divEx')
+        ex5.addEventListener('keypress', renderValue)
+        function renderValue() {
+            let keyCode = ex5.value
+            if (event.keyCode === 13){ //13 is keycode of enter
+                divEx.innerHTML = "you entered: " + keyCode
+            }
+        }
+        
+
+    </script>
+</body>
+</html>
