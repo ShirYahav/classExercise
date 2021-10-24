@@ -54,7 +54,7 @@ console.log(squaresGreaterthanArr)
 let equalToSize = 200
 
 const wantedSquare = newSquareArray.find(function(obj){
-    return obj.size = equalToSize
+    return obj.size === equalToSize
 })
 console.log(wantedSquare) //why it returns width 10 instead of width 30?
 
