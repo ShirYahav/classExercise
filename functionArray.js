@@ -88,10 +88,8 @@ const sortedArr = squareArray4.sort(function(a, b){
 })
 console.log(sortedArr)
 
-//exercise 8 
+//exercise 8 think about it
 const arrayOfNumbers = [23, 45, 23, 56, 67, 89, 23, 10];
 let searchV = 23
 const searchVIndex = arrayOfNumbers.indexOf(searchV);
 console.log(searchVIndex)
-
-
