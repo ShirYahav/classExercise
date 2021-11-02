@@ -15,19 +15,19 @@ function Person(firstName, lastName){
 }
 
 //3
-function Costumer(firstName, lastName, newCity, newStreet, newBuildingNumber){
+function Customer(firstName, lastName, newCity, newStreet, newBuildingNumber){
     Person.call(this, firstName, lastName)
     this.address = new Address(newCity, newStreet, newBuildingNumber)
 }
 
-Costumer.prototype = Object.create(Person.prototype)
+Customer.prototype = Object.create(Person.prototype)
 
-Costumer.prototype.costumerDetails = function(){
+Customer.prototype.customerDetails = function(){
     return(this.getFullName() + " lives in " + this.address.city + " " + this.address.street + " " + this.address.buildingNumber )
 }
 
-const firstCostumer = new Costumer('shir', 'yahav', 'rishon', 'paul berg', 5)
-console.log(firstCostumer.costumerDetails())
+const firstCustomer = new Customer('shir', 'yahav', 'rishon', 'paul berg', 5)
+console.log(firstCustomer.customerDetails())
 
 //4
 function Item(itemName, itemID, itemPrice){
@@ -40,18 +40,30 @@ function Item(itemName, itemID, itemPrice){
 function Order(orderId, firstName, lastName, newCity, newStreet, newBuildingNumber){
     this.orderId = orderId
     this.items = []
-    Costumer.call(this, firstName, lastName, newCity, newStreet, newBuildingNumber)
+    this.customerDetails = new Customer(firstName, lastName, newCity, newStreet, newBuildingNumber)
 }
 
-Order.prototype = Object.create(Costumer.prototype)
+Order.prototype = Object.create(Customer.prototype)
 
-Order.prototype.addItemToOrder = function(newItemName, newItemID, newItemPrice){
-    let newItem = new Item(newItemName, newItemID, newItemPrice)
+Order.prototype.addItemToOrder = function(itemName, itemID, itemPrice){
+    let newItem = new Item(itemName, itemID, itemPrice)
     this.items.push(newItem)
 }
 
+Order.prototype.getTotalPrice = function(){
+    let itemsPrices = this.items.map(obj =>{
+        return obj.itemPrice
+    })
+    let totalPrice = itemsPrices.reduce(( previousValue, currentValue ) => previousValue + currentValue,
+    0)
+    return(totalPrice)
+}
+//console.log(getTotalPrice)
+
+
 const firstOrder = new Order(1, 'shir', 'yahav', 'rishon', 'paul berg', 5)
+console.log(firstOrder.addItemToOrder('book', 6, 55))
+console.log(firstOrder.addItemToOrder('cup', 2, 34))
 console.log(firstOrder)
-console.log(firstOrder.addItemToOrder('book', 3 , '20$'))
 
 
