@@ -58,12 +58,13 @@ Order.prototype.getTotalPrice = function(){
     0)
     return(totalPrice)
 }
-//console.log(getTotalPrice)
 
 
 const firstOrder = new Order(1, 'shir', 'yahav', 'rishon', 'paul berg', 5)
 console.log(firstOrder.addItemToOrder('book', 6, 55))
 console.log(firstOrder.addItemToOrder('cup', 2, 34))
 console.log(firstOrder)
+console.log(firstOrder.getTotalPrice())
+
 
 
